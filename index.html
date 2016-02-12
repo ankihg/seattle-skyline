@@ -4,7 +4,14 @@
   <link rel="stylesheet" type="text/css" href="/styles/base.css">
   <link rel="stylesheet" type="text/css" href="/styles/modules.css">
 
-  <script src="http://maps.googleapis.com/maps/api/js">
+  <script src="http://maps.googleapis.com/maps/api/js"></script>
+
+  <script id='building-section-template' type='text/x-handlebars-template'>
+    <h1>{{name}}</h1>
+  </script>
+
+  <script id='pic-template' type='text/x-handlebars-template'>
+
   </script>
 
 </head>
@@ -64,6 +71,8 @@
   </figure>
 
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+
   <script src="scripts/pic.js"></script>
   <script src="scripts/building.js"></script>
   <script src="scripts/index.js"></script>

@@ -7,6 +7,8 @@ var Building = function(name, lat, lng, year, height, icon) {
  this.year = year;
  this.height = height;
  this.icon = icon;
+ this.pics = Pic.filterByBuilding(this);
+ console.log(this.pics);
  this.makeSection();
  Building.buildings.push(this);
 };
@@ -121,11 +123,11 @@ Building.prototype.generateInfoText = function() {
 
 Building.prototype.makeSection = function() {
   this.$section = $('<section>').attr('id', this.id);
-  this.$section.html('<h1>'+this.name+'</h1>');
+  var template = Handlebars.compile($('#building-section-template').text());
+  var html = template(this);
+  this.$section.html(html);
   $('#buildings').append(this.$section);
 };
-
-
 
 Building.prototype.getName = function() {
  return this.name;

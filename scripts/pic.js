@@ -3,7 +3,7 @@
   var Pic = function(tmp) {
     this.src = tmp.src;
     this.desc = tmp.desc;
-    this.buildings = this.buildings;
+    this.buildings = tmp.buildings;
   };
 
   Pic.all = [];
@@ -59,6 +59,16 @@ Pic.ensureAll = function(ctx, next) {
   }
 };
 
+Pic.prototype.toHTML = function() {
+  var template = Handlebars.compile($('#pic-template').text());
+  var html = template(this);
+};
+
+Pic.filterByBuilding = function(building) {
+  return Pic.all.filter(function(pic) {
+    return (pic.buildings.indexOf(building.id) >= 0);
+  });
+};
 
   module.Pic = Pic;
 })(window);
