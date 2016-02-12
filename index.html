@@ -1,0 +1,75 @@
+<html>
+<head>
+
+  <link rel="stylesheet" type="text/css" href="/styles/base.css">
+  <link rel="stylesheet" type="text/css" href="/styles/modules.css">
+
+  <script src="http://maps.googleapis.com/maps/api/js">
+  </script>
+
+</head>
+<body>
+  <h1 onclick="changeColor(this)">&block;&lhblk;&block;&block;&lhblk;&block;&lhblk;&block;&lhblk;&lhblk;&block;&lhblk; &nbsp; S E A T T L E &nbsp; S K Y L I N E &nbsp; &block;&lhblk;&block;&lhblk;&block;&lhblk;&block;&lhblk;&block;&block;&lhblk; </h1>
+
+  <div id="googleMap" style="width:100%;height:80%;color:black"></div>
+
+  <h3 onclick="changeColor(this)"><u>&block;&lhblk;&block;&block;&lhblk;&lhblk;&block;&lhblk; &nbsp; a t &nbsp; n i g h T &nbsp; t h E &nbsp; s U n &nbsp; i N &nbsp; r e T r e a T &nbsp; m A d e &nbsp; t h E &nbsp; s k Y l i N e &nbsp; l o o K &nbsp; l i k e &nbsp; c R o o K e d &nbsp; t e e T h &nbsp; &lhblk;&lhblk;&block;&lhblk;&block;&block;&lhblk;&block;</u></h3>
+
+  <section id='buildings'></section>
+
+  <figure onclick="changeColor(this)">
+   <img class="imgg" src="/seattle_skyline/img/volunteer_park.jpg">
+   <figcaption> &nbsp; v o l u n t e e r &nbsp; p a r k &nbsp; w a t e r &nbsp; t o w e r</figcaption>
+  </figure>
+
+  <figure onclick="changeColor(this)">
+   <img class="imgg" src="/seattle_skyline/img/bell_st_ped_br.jpg">
+   <figcaption> &nbsp; b e l l &nbsp; s t &nbsp; p e d e s t r i a n &nbsp; b r i d g e</figcaption>
+  </figure>
+
+  <figure onclick="changeColor(this)">
+   <img class="imgg" src="/seattle_skyline/img/1201_3rd_ave.jpg">
+   <figcaption> &nbsp; 1 2 0 1 &nbsp; 3 r d &nbsp; a v e n u e</figcaption>
+  </figure>
+
+  <figure onclick="changeColor(this)">
+   <img class="imgg" src="/seattle_skyline/img/russell_investments_center.jpg">
+   <figcaption> &nbsp; r u s s e l l &nbsp; i n v e s t m e n t s &nbsp; c e n t e r</figcaption>
+  </figure>
+
+  <figure onclick="changeColor(this)">
+   <img class="imgg" src="/seattle_skyline/img/rainier_tower.jpg">
+   <figcaption> &nbsp; r a i n i e r &nbsp; t o w e r</figcaption>
+  </figure>
+
+  <figure onclick="changeColor(this)">
+   <img class="imgg" src="/seattle_skyline/img/smith_tower.jpg">
+   <figcaption> &nbsp; s m i t h &nbsp; t o w e r</figcaption>
+  </figure>
+
+  <figure id="full" onclick="changeColor(this)">
+   <figcaption><font size="4"><u><font size="2">-- --- -[c-0-m-i-N-g---s-0-o-n]- -- -- --- - --</font>||---S---O---D---O------B---Y-----<font size="5">!!!!!!!.!!!!!!!.!!!!!!!?</font>---L---I---G---H---T------R---A---I---L---|| <font size="2">- -- - -- -- -[c-o-M-i-n-g --s-o-0-N]-- -- -</font> </u></font></figcaption>
+   <img class="imgg" src="https://farm6.staticflickr.com/5813/23443493143_9dde9450b4_k.jpg">
+   <figcaption><font size="4"><u>||-------------------------------------------------------------------------------------------------------------------------------<font size="5">!!!!!!!.!!!!!!!.!!!!!!!?</font>------------------------------||</u></font></figcaption>
+  </figure>
+
+  <figure onclick="changeColor(this)">
+   <img class="imgg" src="https://farm1.staticflickr.com/737/23824946606_d49f12046a_k.jpg">
+   <figcaption> I5 north</figcaption>
+  </figure>
+
+  <figure onclick="changeColor(this)">
+   <img class="imgg" src="https://farm1.staticflickr.com/680/23742749742_182917912c_k.jpg">
+   <figcaption> I5 south</figcaption>
+  </figure>
+
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+  <script src="scripts/building.js"></script>
+  <script src="scripts/index.js"></script>
+  <script>
+    google.maps.event.addDomListener(window, 'load', initialize);
+    console.log('hi');
+  </script>
+
+</body>
+</html>

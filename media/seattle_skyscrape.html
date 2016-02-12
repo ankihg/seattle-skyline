@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="http://maps.googleapis.com/maps/api/js">
+</script>
+
+<script>
+var map;
+
+//quiz data
+var quiz = false;
+var secretBuilding;
+var score;
+var count;
+var tryCount;
+
+function initialize()
+{
+var myCenter = new google.maps.LatLng(47.610627, -122.333099);
+var mapProp = {
+ center:myCenter,
+ zoom:15,
+ mapTypeId:google.maps.MapTypeId.ROADMAP
+ };
+
+map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+// Create a DIV to hold the control and call QuizControl()
+ var quizControlDiv = document.createElement('div');
+ quizControlDiv.id = 'controlDiv';
+ var quizControl = new QuizControl(quizControlDiv, map, 'Quiz');
+// quizControlDiv.index = 1;
+ map.controls[google.maps.ControlPosition.TOP_RIGHT].push(quizControlDiv);
+
+new Building('Columbia Center', 47.604497, -122.330466, 1985, 943, '/seattle_skyline/Columbia_Center.png');
+new Building('1201 Third Ave', 47.607182, -122.336096, 1988, 772, '/seattle_skyline/1201_Third_Ave.png');
+new Building('Two Union Square', 47.609695, -122.332143, 1989, 740, '/seattle_skyline/Two_Union_Square.png');
+new Building('Seattle Municipal Tower', 47.605097, -122.329756, 1990, 722, '/seattle_skyline/Seattle_Municipal_Tower.png');
+new Building('Safeco Plaza', 47.606218, -122.333713, 1969, 630, '/seattle_skyline/Safeco_Plaza.png');
+new Building('Space Needle', 47.620513, -122.349342, 1962, 605, '/seattle_skyline/Space_Needle.png');
+new Building('Russell Investments Center', 47.607782, -122.338112, 2006, 598, '/seattle_skyline/Russell_Investments_Center.png');
+new Building('US Bank Centre', 47.610615, -122.334758, 1989, 580, '/seattle_skyline/US_Bank_Center.png');
+new Building('Wells Fargo Center', 47.604974, -122.334064, 1983, 573, '/seattle_skyline/Wells_Fargo_Center.png');
+new Building('Bank of America Fifth Avenue Plaza', 47.605829, -122.330374, 1981, 543, '/seattle_skyline/Bank_of_America_Fifth_Avenue_Plaza.png');
+new Building('901 Fifth Avenue', 47.605805, -122.331982, 1973, 536, '/seattle_skyline/901_Fifth_Avenue.png');
+new Building('Rainier Tower', 47.608827, -122.334371, 1977, 514, '/seattle_skyline/Rainier_Tower.png');
+new Building('Fourth and Madison Building', 47.605688, -122.333095, 2002, 512, '/seattle_skyline/Fourth_and_Madison_Building.png');
+new Building('1918 Eighth Avenue', 47.615676, -122.335963, 2009, 500, '/seattle_skyline/1918_Eighth_Avenue.png');
+new Building('Qwest Plaza', 47.613270, -122.334455, 1976, 498, '/seattle_skyline/Qwest_Plaza.png');
+
+Building.addMarkers(map);
+
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+// Add a Home control that returns the user to London
+function QuizControl(controlDiv, map, building) {
+ controlDiv.style.padding = '5px';
+ controlDiv.style.display = 'block';
+ var controlUI = document.createElement('div');
+ controlUI.id = 'control';
+ controlUI.style.backgroundColor = 'black';
+ controlUI.style.color = 'white';
+ controlUI.style.border='1px solid';
+ controlUI.style.cursor = 'pointer';
+ controlUI.style.textAlign = 'center';
+ controlUI.title = 'Set map to London';
+ controlDiv.appendChild(controlUI);
+ var controlText = document.createElement('div');
+ controlText.id = 'controlTxt';
+ controlText.style.fontFamily='Arial,sans-serif';
+ controlText.style.fontSize='14px';
+ controlText.style.paddingLeft = '6px';
+ controlText.style.paddingRight = '6px';
+ controlText.innerHTML = '<h2>'.concat(building, '<h2>');
+ controlUI.appendChild(controlText);
+
+ // Setup click-event listener: simply set the map to London
+ /*google.maps.event.addDomListener(controlUI, 'click', function() {
+ map.setCenter(new google.maps.LatLng(47.605627, -122.333099))
+ });*/
+ google.maps.event.addDomListener(controlUI, 'click', function() {
+ quizBuilding(false)
+ });
+}
+
+function alterQuizControl(controlDiv, map, building) {
+ controlDiv.style.padding = '5px';
+ controlDiv.style.display = 'block';
+ var controlUI = document.getElementById('control');
+ controlUI.style.backgroundColor = 'white';
+ controlUI.style.color = 'black';
+ controlUI.style.border='1px solid';
+ controlUI.style.cursor = 'pointer';
+ controlUI.style.textAlign = 'center';
+ controlUI.title = 'Set map to London';
+ controlDiv.appendChild(controlUI);
+ var controlText = document.getElementById('controlTxt');
+ controlText.style.fontFamily='Arial,sans-serif';
+ controlText.style.fontSize='14px';
+ controlText.innerHTML = '';
+ controlText.innerHTML = '<h2>'.concat(building, '?<h2>');
+ controlUI.appendChild(controlText);
+ return quizControl;
+}
+
+function quizBuilding(fromBuildingSelection) {
+ if (quiz && !fromBuildingSelection) {
+ //must move forward by selecting secretBuilding
+ alert('select building from map');
+ return;
+ }
+ if (!quiz) {
+ //new quiz
+ quiz = true;
+ Building.buildingsToQuiz = Building.buildings.slice();
+ score = 0;
+ count = 0;
+ makeScoreDisplay();
+ }
+ updateScoreDisplay();
+
+ if (Building.buildingsToQuiz.length < 1) {
+ //all buildings completed
+ alert('all buildings quizzed');
+ endQuiz();
+ return;
+ }
+
+ var r = Math.floor(Math.random() * Building.buildingsToQuiz.length);
+ var building = Building.buildingsToQuiz[r];
+ secretBuilding = building;
+ tryCount = 0;
+
+ // Create a DIV to hold the control and call QuizControl()
+ var quizControlDiv = document.getElementById('controlDiv');
+ var quizControl = alterQuizControl(quizControlDiv, map, building.getName());
+// quizControlDiv.index = 1;
+ map.controls[google.maps.ControlPosition.TOP_RIGHT].push(quizControlDiv);
+
+};
+
+function makeScoreDisplay() {
+ var scoreDisplay = document.createElement('div');
+ scoreDisplay.id = 'scoreDisplay';
+
+ scoreDisplay.style.padding = '5px';
+ scoreDisplay.style.backgroundColor = 'white';
+ scoreDisplay.style.color = 'black';
+ scoreDisplay.style.fontSize='14px';
+ scoreDisplay.style.border='1px solid';
+ scoreDisplay.style.paddingLeft = '6px';
+ scoreDisplay.style.paddingRight = '6px';
+ scoreDisplay.style.display = 'block';
+
+
+ scoreDisplay.innerHTML = '<h2>'.concat(score, '/', count ,'</h2>');
+ map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(scoreDisplay);
+} 
+
+function updateScoreDisplay() {
+ var scoreDisplay = document.getElementById('scoreDisplay');
+ scoreDisplay.innerHTML = '';
+ scoreDisplay.innerHTML = '<h2>'.concat(score, '/', count ,'</h2>');
+ 
+}
+
+function endQuiz() {
+ quiz = false;
+ var quizControl = document.getElementById('control');
+ quizControl.style.backgroundColor = 'black';
+ quizControl.style.color = 'white';
+ var controlTxt = document.getElementById('controlTxt');
+ controlTxt.innerHTML = '';
+ controlTxt.innerHTML = '<h2>Quiz</h2>';
+
+ //remove scoreDisplay
+ var scoreDisplay = document.getElementById("scoreDisplay");
+ scoreDisplay.parentNode.removeChild(scoreDisplay);
+}
+
+//Building class
+var Building = function(name, lat, lng, year, height, icon) {
+ this.name = name;
+ this.lat = lat;
+ this.lng = lng;
+ this.year = year;
+ this.height = height;
+ this.icon = icon;
+ Building.buildings.push(this);
+};
+
+Building.buildings = [];
+Building.buildingsToQuiz = [];
+
+Building.addMarkers = function(map) {
+ for (var i=0; i<Building.buildings.length; i++) {
+ var building = Building.buildings[i];
+ building.addMarker(map);
+ }
+};
+
+Building.prototype.addMarker = function(map) {
+ var pos = new google.maps.LatLng(this.lat, this.lng);
+ var name = this.name;
+ var icon = this.icon;
+ var marker=new google.maps.Marker({
+ position:pos,
+ name:name,
+ icon:icon
+ });
+ marker.setMap(map);
+
+ this.addInfoWindow(map, marker);
+};
+
+Building.prototype.addInfoWindow = function(map, marker) {
+ var infoText = this.generateInfoText();
+ var infowindow = new google.maps.InfoWindow({
+ content:infoText
+ });
+ 
+ google.maps.event.addListener(marker, 'click', function() {
+ infowindow.close(map,marker);
+ if (quiz) {
+ if (marker.name == secretBuilding.getName() ) {
+ alert('good job!');
+ if (tryCount == 0) {
+ score++;
+ }
+ count++;
+
+ //remove from Building.buildingsToQuiz
+ var index = Building.buildingsToQuiz.indexOf(secretBuilding);
+ if (index > -1) {
+ Building.buildingsToQuiz.splice(index, 1);
+ }
+
+ quizBuilding(true);
+
+ } else {
+ alert('try again...');
+ tryCount++;
+
+ }
+ } else {
+ infowindow.open(map,marker);
+ }
+ });
+
+ google.maps.event.addListener(marker, 'mouseover', function() {
+ if (quiz) {
+ marker.setAnimation(google.maps.Animation.BOUNCE);
+ if (tryCount >= 2) {
+ infowindow.open(map,marker);
+ }
+ }
+ });
+
+ google.maps.event.addListener(marker, 'mouseout', function() {
+ marker.setAnimation(null);
+ if (quiz && tryCount >= 2) {
+ infowindow.close(map,marker);
+ }
+ });
+};
+
+
+Building.prototype.generateInfoText = function() {
+ var r = Math.random() * 3;
+ if (r < 1) {
+ return this.name.concat(", built in ", this.year, ", is ", this.height, " ft tall.");
+ } else if (r < 2) {
+ return "Built in ".concat(this.year, ", ", this.name, " is ", this.height, " ft tall.");
+ } else {
+ return this.name.concat(" was built in ", this.year, " and is ", this.height, " ft tall.");
+ }
+};
+
+Building.prototype.getName = function() {
+ return this.name;
+};
+
+</script>
+
+<script>
+
+function changeColor(div) {
+ var r = Math.random() * 7;
+ var color = "#ffffff";
+ if (r < 1) {
+  color = "#FFA500"; //orange
+ } else if (r < 2) {
+  color = "#00ff00"; //green
+ } else if (r < 3) {
+  color = "#ffff00"; //yellow
+ } else if (r < 4) {
+  color = "#00ffff"; //cyan
+ } else if (r < 5) {
+  color = "#FFB6C1"; //pink
+ } else if (r < 6) {
+  color = "#0000ff"; //blue
+ }
+
+ div.style.color = color;
+}
+
+/*function rearrange(div) {
+ var html = div.innerHTML;
+ var toks = html.split("&nbsp;");
+ alert(toks);
+ var west = toks[0];
+ var east = toks[toks.lenght-1];
+
+ var skyscraps = [west, east];
+ for (var i=0; i<skyscraps.length; i++) {
+  alert(skyscraps[i]);
+  for (var c=0; c<skyscraps[i].length; c++) {
+   var skyscrap = "";
+   if (2*Math.random() < 1) {
+    skyscrap += "&lhblk;";
+   } else {
+    skyscrap += "&block;";
+   }
+   skyscraps[i] = skyscrap;
+  }
+ }
+
+ west = skyscrap[0];
+ east = skyscrap[1];
+
+ toks[0] = west;
+ toks[1] = east;
+
+ var html = "";
+ for (var i=0; i<toks.length; i++) {
+  html += toks[i];
+ }
+ alert(html);
+ div.innerHTML = html;
+ alert('rearranged;');
+}*/
+
+</script>
+
+<style>
+
+body {
+ background-color: #000000;
+ color: white;
+}
+
+.imgg {
+ width: 100%;
+ display: inline;
+}
+
+figure
+{
+ width:48%;
+ float:left;
+ margin:1%;
+ text-align:center;
+ padding:0px;
+}
+
+#full {
+ width:96%;
+}
+
+figcaption {
+ font-weight: bold;
+}
+
+h1 {
+ text-align:center;
+}
+
+h3 {
+ text-align:center;
+}
+
+</style>
+
+</head>
+<body>
+<h1 onclick="changeColor(this)">&block;&lhblk;&block;&block;&lhblk;&block;&lhblk;&block;&lhblk;&lhblk;&block;&lhblk; &nbsp; S E A T T L E &nbsp; S K Y L I N E &nbsp; &block;&lhblk;&block;&lhblk;&block;&lhblk;&block;&lhblk;&block;&block;&lhblk; </h1>
+
+<div id="googleMap" style="width:100%;height:80%;color:black"></div>
+
+<h3 onclick="changeColor(this)"><u>&block;&lhblk;&block;&block;&lhblk;&lhblk;&block;&lhblk; &nbsp; a t &nbsp; n i g h T &nbsp; t h E &nbsp; s U n &nbsp; i N &nbsp; r e T r e a T &nbsp; m A d e &nbsp; t h E &nbsp; s k Y l i N e &nbsp; l o o K &nbsp; l i k e &nbsp; c R o o K e d &nbsp; t e e T h &nbsp; &lhblk;&lhblk;&block;&lhblk;&block;&block;&lhblk;&block;</u></h3>
+
+<figure onclick="changeColor(this)">
+ <img class="imgg" src="/seattle_skyline/img/volunteer_park.jpg">
+ <figcaption> &nbsp; v o l u n t e e r &nbsp; p a r k &nbsp; w a t e r &nbsp; t o w e r</figcaption>
+</figure>
+
+<figure onclick="changeColor(this)">
+ <img class="imgg" src="/seattle_skyline/img/bell_st_ped_br.jpg">
+ <figcaption> &nbsp; b e l l &nbsp; s t &nbsp; p e d e s t r i a n &nbsp; b r i d g e</figcaption>
+</figure>
+
+<figure onclick="changeColor(this)">
+ <img class="imgg" src="/seattle_skyline/img/1201_3rd_ave.jpg">
+ <figcaption> &nbsp; 1 2 0 1 &nbsp; 3 r d &nbsp; a v e n u e</figcaption>
+</figure>
+
+<figure onclick="changeColor(this)">
+ <img class="imgg" src="/seattle_skyline/img/russell_investments_center.jpg">
+ <figcaption> &nbsp; r u s s e l l &nbsp; i n v e s t m e n t s &nbsp; c e n t e r</figcaption>
+</figure>
+
+<figure onclick="changeColor(this)">
+ <img class="imgg" src="/seattle_skyline/img/rainier_tower.jpg">
+ <figcaption> &nbsp; r a i n i e r &nbsp; t o w e r</figcaption>
+</figure>
+
+<figure onclick="changeColor(this)">
+ <img class="imgg" src="/seattle_skyline/img/smith_tower.jpg">
+ <figcaption> &nbsp; s m i t h &nbsp; t o w e r</figcaption>
+</figure>
+
+<figure id="full" onclick="changeColor(this)">
+ <figcaption><font size="4"><u><font size="2">-- --- -[c-0-m-i-N-g---s-0-o-n]- -- -- --- - --</font>||---S---O---D---O------B---Y-----<font size="5">!!!!!!!.!!!!!!!.!!!!!!!?</font>---L---I---G---H---T------R---A---I---L---|| <font size="2">- -- - -- -- -[c-o-M-i-n-g --s-o-0-N]-- -- -</font> </u></font></figcaption>
+ <img class="imgg" src="https://farm6.staticflickr.com/5813/23443493143_9dde9450b4_k.jpg">
+ <figcaption><font size="4"><u>||-------------------------------------------------------------------------------------------------------------------------------<font size="5">!!!!!!!.!!!!!!!.!!!!!!!?</font>------------------------------||</u></font></figcaption>
+</figure>
+
+<figure onclick="changeColor(this)">
+ <img class="imgg" src="https://farm1.staticflickr.com/737/23824946606_d49f12046a_k.jpg">
+ <figcaption> I5 north</figcaption>
+</figure>
+
+<figure onclick="changeColor(this)">
+ <img class="imgg" src="https://farm1.staticflickr.com/680/23742749742_182917912c_k.jpg">
+ <figcaption> I5 south</figcaption>
+</figure>
+
+</body>
+</html>
