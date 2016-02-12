@@ -7,7 +7,7 @@
   <script src="http://maps.googleapis.com/maps/api/js"></script>
 
   <script id='building-section-template' type='text/x-handlebars-template'>
-    <section class='building-section' onclick="Building.toggleImgs(this)">
+    <section id="{{id}}" class='building-section' onclick="Building.toggleImgs(this)">
       <div class='building-title'> <img class="building-icon" src="{{icon}}">  <big>{{name}}</big><small> &nbsp;|&nbsp; {{year}} &nbsp;|&nbsp; {{height}} ft </small></div>
         <section class="building-imgs">
           {{{picsHTML}}}
@@ -21,6 +21,16 @@
      <img class="imgg" src="{{src}}">
      <figcaption> {{desc}} </figcaption>
     </figure>
+  </script>
+
+  <script id='infowindow-template' type='text/x-handlebars-template'>
+    <h3 style="line-height:20%">{{name}}</h3>
+    <div>
+      year opened: {{year}}<br>
+      height: {{height}}ft<br>
+      <br>
+      <a data-bID="{{id}}" onclick="Building.goToSection(this)">+more plz</a>
+    </div>
   </script>
 
 </head>
@@ -88,9 +98,11 @@
   <script src="scripts/building.js"></script>
   <script src="scripts/index.js"></script>
   <script>
-    google.maps.event.addDomListener(window, 'load', initialize);
-    Pic.fetchAll(Building.build);
-    console.log('ready to start');
+    google.maps.event.addDomListener(window, 'load', function() {
+      initialize();
+      Pic.fetchAll(Building.build);
+      console.log('ready to start');
+    });
   </script>
 
 </body>

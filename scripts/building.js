@@ -2,6 +2,7 @@
 var Building = function(name, lat, lng, year, height, icon) {
  this.name = name;
  this.id = this.name.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/ /g, '-' ).toLowerCase();
+ console.log(this.id);
  this.lat = lat;
  this.lng = lng;
  this.year = year;
@@ -59,9 +60,9 @@ Building.prototype.addMarker = function(map) {
 };
 
 Building.prototype.addInfoWindow = function(map, marker) {
- var infoText = this.generateInfoText();
+ this.infoText = this.makeInfowindow();
  var infowindow = new google.maps.InfoWindow({
- content:infoText
+ content:this.infoText
  });
 
  google.maps.event.addListener(marker, 'click', function() {
@@ -110,7 +111,7 @@ Building.prototype.addInfoWindow = function(map, marker) {
 };
 
 
-Building.prototype.generateInfoText = function() {
+/*Building.prototype.generateInfoText = function() {
  var r = Math.random() * 3;
  if (r < 1) {
  return this.name.concat(", built in ", this.year, ", is ", this.height, " ft tall.");
@@ -119,7 +120,7 @@ Building.prototype.generateInfoText = function() {
  } else {
  return this.name.concat(" was built in ", this.year, " and is ", this.height, " ft tall.");
  }
-};
+};*/
 
 Building.prototype.makeSection = function() {
   this.$section = $('<section>').attr('id', this.id);
@@ -135,8 +136,21 @@ Building.prototype.makePicsHTML = function() {
   }, "");
 };
 
+Building.prototype.makeInfowindow = function() {
+  var template = Handlebars.compile($('#infowindow-template').text());
+  return template(this);
+}
+
 Building.toggleImgs = function(buildingSection) {
   $(buildingSection).find('.building-imgs').toggle();
+};
+
+Building.goToSection = function(a) {
+  $('html, body').animate({
+        scrollTop: $("#"+$(a).attr('data-bID')).offset().top
+    }, 1000);
+  $('.building-imgs').hide();
+  $("#"+$(a).attr('data-bID')).find('.building-imgs').show();
 };
 
 Building.prototype.getName = function() {
