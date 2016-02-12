@@ -29,15 +29,19 @@ h3 {
  text-align:center;
 }
 
-.building-name {
+.building-title {
   font-size: 200%;
   text-align: center;
+}
+.building-icon {
+  display: inline;
+  width: 5%;
 }
 
 .building-section {
 
 }
-.building-section img {
+.building-imgs img {
   width: 100%;
   height: 100%;
 }

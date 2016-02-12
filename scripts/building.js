@@ -135,6 +135,10 @@ Building.prototype.makePicsHTML = function() {
   }, "");
 };
 
+Building.toggleImgs = function(buildingSection) {
+  $(buildingSection).find('.building-imgs').toggle();
+};
+
 Building.prototype.getName = function() {
  return this.name;
 };

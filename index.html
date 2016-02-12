@@ -7,8 +7,8 @@
   <script src="http://maps.googleapis.com/maps/api/js"></script>
 
   <script id='building-section-template' type='text/x-handlebars-template'>
-    <section class='building-section'>
-      <div class='building-name'>{{name}}</div>
+    <section class='building-section' onclick="Building.toggleImgs(this)">
+      <div class='building-title'> <img class="building-icon" src="{{icon}}">  <big>{{name}}</big><small> &nbsp;|&nbsp; {{year}} &nbsp;|&nbsp; {{height}} ft </small></div>
         <section class="building-imgs">
           {{{picsHTML}}}
         </section>
@@ -30,6 +30,8 @@
   <div id="googleMap" style="width:100%;height:80%;color:black"></div>
 
   <h3 onclick="changeColor(this)"><u>&block;&lhblk;&block;&block;&lhblk;&lhblk;&block;&lhblk; &nbsp; a t &nbsp; n i g h T &nbsp; t h E &nbsp; s U n &nbsp; i N &nbsp; r e T r e a T &nbsp; m A d e &nbsp; t h E &nbsp; s k Y l i N e &nbsp; l o o K &nbsp; l i k e &nbsp; c R o o K e d &nbsp; t e e T h &nbsp; &lhblk;&lhblk;&block;&lhblk;&block;&block;&lhblk;&block;</u></h3>
+
+  <hr>
 
   <section id='buildings'></section>
 
