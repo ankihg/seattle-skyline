@@ -8,7 +8,7 @@ var Building = function(name, lat, lng, year, height, icon) {
  this.height = height;
  this.icon = icon;
  this.pics = Pic.filterByBuilding(this);
- console.log(this.pics);
+ this.picsHTML = this.makePicsHTML();
  this.makeSection();
  Building.buildings.push(this);
 };
@@ -127,6 +127,12 @@ Building.prototype.makeSection = function() {
   var html = template(this);
   this.$section.html(html);
   $('#buildings').append(this.$section);
+};
+
+Building.prototype.makePicsHTML = function() {
+  return this.pics.reduce(function(html, pic) {
+    return html + pic.toHTML();
+  }, "");
 };
 
 Building.prototype.getName = function() {

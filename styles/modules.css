@@ -28,3 +28,20 @@ h1 {
 h3 {
  text-align:center;
 }
+
+.building-name {
+  font-size: 200%;
+  text-align: center;
+}
+
+.building-section {
+
+}
+.building-section img {
+  width: 100%;
+  height: 100%;
+}
+
+.building-imgs {
+  display: none;
+}

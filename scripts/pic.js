@@ -61,7 +61,7 @@ Pic.ensureAll = function(ctx, next) {
 
 Pic.prototype.toHTML = function() {
   var template = Handlebars.compile($('#pic-template').text());
-  var html = template(this);
+  return template(this);
 };
 
 Pic.filterByBuilding = function(building) {

@@ -7,11 +7,20 @@
   <script src="http://maps.googleapis.com/maps/api/js"></script>
 
   <script id='building-section-template' type='text/x-handlebars-template'>
-    <h1>{{name}}</h1>
+    <section class='building-section'>
+      <div class='building-name'>{{name}}</div>
+        <section class="building-imgs">
+          {{{picsHTML}}}
+        </section>
+      <hr>
+    </section>
   </script>
 
   <script id='pic-template' type='text/x-handlebars-template'>
-
+    <figure onclick="changeColor(this)">
+     <img class="imgg" src="{{src}}">
+     <figcaption> {{desc}} </figcaption>
+    </figure>
   </script>
 
 </head>
