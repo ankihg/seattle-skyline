@@ -26,6 +26,7 @@
   <script id='infowindow-template' type='text/x-handlebars-template'>
     <h3 style="line-height:20%; text-align:left">{{name}}</h3>
     <div>
+      <img src="{{icon}}" style="float:right; height: 50%;"  data-bID='{{id}}' onclick="Building.goToSection(this)">
       opened yr {{year}}<br>
       {{height}} ft<br>
       {{floors}} floors<br>
