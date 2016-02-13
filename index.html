@@ -26,10 +26,11 @@
   <script id='infowindow-template' type='text/x-handlebars-template'>
     <h3 style="line-height:20%; text-align:left">{{name}}</h3>
     <div>
-      year opened: {{year}}<br>
-      height: {{height}}ft<br>
+      opened yr {{year}}<br>
+      {{height}} ft<br>
+      {{floors}} floors<br>
       <br>
-      <a data-bID="{{id}}" onclick="Building.goToSection(this)">+more plz</a>
+      <a data-bID='{{id}}' onclick="Building.goToSection(this)">+more plz</a>
     </div>
   </script>
 
