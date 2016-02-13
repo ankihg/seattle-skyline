@@ -34,6 +34,8 @@ Building.build = function() {
   new Building('4th and Madison Building', 47.605688, -122.333095, 2002, 512, 40, '/media/Fourth_and_Madison_Building.png');
   new Building('1918 8th Ave', 47.615676, -122.335963, 2009, 500, 36, '/media/1918_Eighth_Avenue.png');
   new Building('Qwest Plaza', 47.613270, -122.334455, 1976, 498, 33, '/media/Qwest_Plaza.png');
+  new Building('1000 2nd Ave', 47.605749, -122.335242, 1987, 493, 43, '/media/1000_2nd_Ave.png');
+  new Building('Henry M Jackson Federal Building', 47.604590, -122.335273, 1974, 487, 37, '/media/Henry_M_Jackson_Federal_Building.png');
   console.log('buildings created');
 
   Building.addMarkers(map);
