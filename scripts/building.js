@@ -31,7 +31,7 @@ Building.build = function() {
   new Building('800 5th Ave', 47.605829, -122.330374, 1981, 543, 42, '/media/Bank_of_America_Fifth_Avenue_Plaza.png');
   new Building('901 5th Ave', 47.605805, -122.331982, 1973, 536, 41, '/media/901_Fifth_Avenue.png');
   new Building('Rainier Tower', 47.608827, -122.334371, 1977, 514, 31, '/media/Rainier_Tower.png');
-  new Building('4th and Madison Building', 47.605688, -122.333095, 2002, 512, 40, '/media/Fourth_and_Madison_Building.png');
+  new Building('4th & Madison Building', 47.605688, -122.333095, 2002, 512, 40, '/media/Fourth_and_Madison_Building.png');
   new Building('1918 8th Ave', 47.615676, -122.335963, 2009, 500, 36, '/media/1918_Eighth_Avenue.png');
   new Building('Qwest Plaza', 47.613270, -122.334455, 1976, 498, 33, '/media/Qwest_Plaza.png');
   new Building('1000 2nd Ave', 47.605749, -122.335242, 1987, 493, 43, '/media/1000_2nd_Ave.png');
