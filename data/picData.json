@@ -88,7 +88,7 @@
   },
   {
     "src": "https://farm2.staticflickr.com/1702/24986756295_086c583985_b.jpg",
-    "desc": "even cooler than the can",
+    "desc": "even cooler than a can",
     "buildings": [
       "rainier-tower"
     ]
@@ -105,6 +105,34 @@
     "desc": "price for internet?",
     "buildings": [
       "russell-investments-center"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1670/24316626614_aba8080b7d_b.jpg",
+    "desc": "concave facade",
+    "buildings": [
+      "columbia-center"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1505/24947212765_8c4e7a486d_b.jpg",
+    "desc": "flat facade",
+    "buildings": [
+      "columbia-center"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1493/24947192425_2f03d18c15_b.jpg",
+    "desc": "henry m jackson federal building",
+    "buildings": [
+      "henry-m-jackson-federal-building"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1542/24320358553_eb2d6940a6_b.jpg",
+    "desc": "1000 2nd ave",
+    "buildings": [
+      "1000-2nd-ave"
     ]
   }
 
