@@ -145,17 +145,10 @@ Building.prototype.makeInfowindow = function() {
 }
 
 Building.toggleImgs = function(buildingSection) {
-  if ($(buildingSection).find('.building-imgs').is(":hidden")) {
-    $(buildingSection).find('.building-imgs').show();
-    $('html, body').animate({
-          scrollTop: $(buildingSection).offset().top
-      }, 500);
-  } else {
-    $(buildingSection).find('.building-imgs').hide();
-    $('html, body').animate({
-          scrollTop: $(buildingSection).offset().top
-      }, 100);
-  }
+  $('html, body').animate({
+      scrollTop: $(buildingSection).offset().top
+  }, 500);
+  $(buildingSection).find('.building-imgs').toggle();
 };
 
 Building.goToSection = function(a) {
