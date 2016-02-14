@@ -174,10 +174,11 @@ function changeColor(div) {
  }
 
  div.style.color = color;
-}
+};
 
 
 function shuffle(elm) {
+  var imgs = $(elm).find('img');
   var txt = $(elm).text();
   txt = txt.split('').map(function(c) {
     if (3*Math.random() < 2) {
@@ -187,7 +188,13 @@ function shuffle(elm) {
     }
   }).join('');
   $(elm).text(txt);
-}
+  $(elm).prepend(imgs);
+};
+
+function prevent(e) {
+  console.log('hi');
+  e.stopPropagation();
+};
 
 
 /*function rearrange(div) {
