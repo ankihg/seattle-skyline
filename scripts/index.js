@@ -176,6 +176,20 @@ function changeColor(div) {
  div.style.color = color;
 }
 
+
+function shuffle(elm) {
+  var txt = $(elm).text();
+  txt = txt.split('').map(function(c) {
+    if (3*Math.random() < 2) {
+      return c.toLowerCase();
+    } else {
+      return c.toUpperCase();
+    }
+  }).join('');
+  $(elm).text(txt);
+}
+
+
 /*function rearrange(div) {
  var html = div.innerHTML;
  var toks = html.split("&nbsp;");

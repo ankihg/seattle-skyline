@@ -8,7 +8,7 @@
 
   <script id='building-section-template' type='text/x-handlebars-template'>
     <section id="{{id}}" class='building-section' onclick="Building.toggleImgs(this)">
-      <div class='building-title'> <img class="building-icon" src="{{icon}}">  <big>{{name}}</big><small> &nbsp;|&nbsp; {{year}} &nbsp;|&nbsp; {{height}} ft &nbsp;|&nbsp; {{floors}} floors </small></div>
+      <div class='building-title' onclick="changeColor(this)"> <img class="building-icon" src="{{icon}}">  <big>{{name}}</big><small> &nbsp;|&nbsp; {{year}} &nbsp;|&nbsp; {{height}} ft &nbsp;|&nbsp; {{floors}} floors </small></div>
         <section class="building-imgs">
           {{{picsHTML}}}
         </section>
@@ -41,7 +41,7 @@
 
   <div id="googleMap" style="width:100%;height:80%;color:black"></div>
 
-  <h3 onclick="changeColor(this)"><u>&block;&lhblk;&block;&block;&lhblk;&lhblk;&block;&lhblk; &nbsp; a t &nbsp; n i g h T &nbsp; t h E &nbsp; s U n &nbsp; i N &nbsp; r e T r e a T &nbsp; m A d e &nbsp; t h E &nbsp; s k Y l i N e &nbsp; l o o K &nbsp; l i k e &nbsp; c R o o K e d &nbsp; t e e T h &nbsp; &lhblk;&lhblk;&block;&lhblk;&block;&block;&lhblk;&block;</u></h3>
+  <h3 onclick="changeColor(this); shuffle(this);"><u>&block;&lhblk;&block;&block;&lhblk;&block;&lhblk; &nbsp; a t &nbsp; n i g h T &nbsp; t h E &nbsp; s U n &nbsp; i N &nbsp; r e T r e a T &nbsp; m A d e &nbsp; t h E &nbsp; s k Y l i N e &nbsp; l o o K &nbsp; l i k e &nbsp; c R o o K e d &nbsp; t e e T h &nbsp; &block;&lhblk;&block;&block;&lhblk;&block;</u></h3>
 
   <hr>
 
