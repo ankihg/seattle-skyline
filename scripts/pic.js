@@ -16,7 +16,7 @@ Pic.loadAll = function(rawData) {
 
 Pic.fetchAll = function(callNext) {
   console.log('fetch all');
-  if (localStorage.reviewData) {
+  if (localStorage.picData) {
     console.log('load from storage');
     Pic.checkUpdate(callNext); //checks if needs update, calls loadAll() either way
   } else {
