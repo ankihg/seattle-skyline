@@ -145,7 +145,6 @@ Building.prototype.makeInfowindow = function() {
 }
 
 Building.toggleImgs = function(buildingSection) {
-  console.log($(buildingSection).offset());
   $('html, body').animate({
       scrollTop: $(buildingSection).offset().top
   }, 500);
@@ -153,8 +152,6 @@ Building.toggleImgs = function(buildingSection) {
 };
 
 Building.goToSection = function(a) {
-  console.log('here in go to section');
-  console.log($("#"+$(a).attr('data-bID')));
   $('html, body').animate({
         scrollTop: $("#"+$(a).attr('data-bID')).offset().top
     }, 1000);
@@ -185,7 +182,6 @@ Building.addSortSelecter = function(selectedSortIndex) {
 
 Building.reorderSection = function(sort, selectedSortIndex) {
   sort();
-  console.log($('#buildings').find('.building-section'));
   // $('.building-section').remove();
   $('#buildings').empty();
   Building.addSortSelecter(selectedSortIndex);
