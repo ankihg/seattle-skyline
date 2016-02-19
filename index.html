@@ -45,7 +45,13 @@
 
   <hr>
 
-  <section id='buildings'></section>
+  <section id='buildings'>
+      <select onchange="Building.handleSortSelecter(this)" style="float:right;font-size:300%;margin-right:2%;display:inline;">
+        <option value="height">sort by: height</option>
+        <option value="year">sort by: year</option>
+        <option value="floors">sort by: floors</option>
+      </select>
+  </section>
 
   <figure onclick="changeColor(this)">
    <img class="imgg" src="https://farm2.staticflickr.com/1507/24691244960_3d2d815569_b.jpg">

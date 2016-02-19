@@ -145,6 +145,7 @@ Building.prototype.makeInfowindow = function() {
 }
 
 Building.toggleImgs = function(buildingSection) {
+  console.log($(buildingSection).offset());
   $('html, body').animate({
       scrollTop: $(buildingSection).offset().top
   }, 500);
@@ -152,11 +153,63 @@ Building.toggleImgs = function(buildingSection) {
 };
 
 Building.goToSection = function(a) {
+  console.log('here in go to section');
+  console.log($("#"+$(a).attr('data-bID')));
   $('html, body').animate({
         scrollTop: $("#"+$(a).attr('data-bID')).offset().top
     }, 1000);
   $('.building-imgs').hide();
   $("#"+$(a).attr('data-bID')).find('.building-imgs').show();
+};
+
+Building.handleSortSelecter = function(elm) {
+  if (elm.selectedIndex === 0) { Building.reorderSection(Building.sortByHeight, elm.selectedIndex); }
+  else if (elm.selectedIndex === 1) { Building.reorderSection(Building.sortByYear, elm.selectedIndex); }
+  else if (elm.selectedIndex === 2) { Building.reorderSection(Building.sortByFloors, elm.selectedIndex); }
+};
+
+Building.addSortSelecter = function(selectedSortIndex) {
+  /* <select onchange="Building.handleSortSelecter(this)" style="float:right;font-size:300%;margin-right:2%;">
+    <option value="height">sort by: height</option>
+    <option value="year">sort by: year</option>
+    <option value="floors">sort by: floors</option>
+  </select>*/
+  var $sortSelect = $('<select>');
+  $sortSelect.html('<option value="height">sort by: height</option><option value="year">sort by: year</option><option value="floors">sort by: floors</option>');
+  $sortSelect.on('change', function() { Building.handleSortSelecter(this); });
+  $sortSelect.css('float', 'right').css('font-size', '300%').css('margin-right', '2%');
+  // $('#selectBox option').eq(3).prop('selected', true);
+  $sortSelect.find('option').eq(selectedSortIndex).prop('selected', true);
+  $('#buildings').prepend($sortSelect);
+}
+
+Building.reorderSection = function(sort, selectedSortIndex) {
+  sort();
+  console.log($('#buildings').find('.building-section'));
+  // $('.building-section').remove();
+  $('#buildings').empty();
+  Building.addSortSelecter(selectedSortIndex);
+  Building.buildings.forEach(function(b) {
+    b.makeSection();
+  });
+}
+
+Building.sortByHeight = function() {
+  Building.buildings = Building.buildings.sort(function(a, b) {
+    return b.height - a.height;
+  });
+};
+
+Building.sortByYear = function() {
+  Building.buildings = Building.buildings.sort(function(a, b) {
+    return a.year - b.year;
+  });
+};
+
+Building.sortByFloors = function() {
+  Building.buildings = Building.buildings.sort(function(a, b) {
+    return b.floors - a.floors;
+  });
 };
 
 Building.prototype.getName = function() {
