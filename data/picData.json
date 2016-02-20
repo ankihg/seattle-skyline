@@ -162,6 +162,14 @@
     "buildings": [
       "seattle-municipal-tower"
     ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1704/24320381683_7f6e2be737_b.jpg",
+    "desc": "from a columbia center balcony",
+    "buildings": [
+      "smith-tower",
+      "columbia-center"
+    ]
   }
 
 ]

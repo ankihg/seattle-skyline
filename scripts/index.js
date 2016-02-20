@@ -9,7 +9,7 @@ var tryCount;
 
 function initialize()
 {
-var myCenter = new google.maps.LatLng(47.610627, -122.333099);
+var myCenter = new google.maps.LatLng(47.609127, -122.333099);
 var mapProp = {
  center:myCenter,
  zoom:15,
