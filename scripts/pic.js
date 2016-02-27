@@ -40,7 +40,7 @@ Pic.checkUpdate = function(callNext) {
   complete: function(data) {
     var etag = data.getResponseHeader('eTag');
     if (localStorage.picEtag !== etag) {
-      Pic.update();
+      Pic.update(callNext);
     } else {
       Pic.loadAll(JSON.parse(localStorage.picData));
       if (callNext) { callNext(); }

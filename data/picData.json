@@ -170,6 +170,42 @@
       "smith-tower",
       "columbia-center"
     ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1490/24983999750_1172cb39d9_b.jpg",
+    "desc": "smith tower & columbia center from 2nd ave & washington st",
+    "buildings": [
+      "smith-tower",
+      "columbia-center"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1511/25161365362_0dd741ecfc_b.jpg",
+    "desc": "entrance",
+    "buildings": [
+      "smith-tower"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1477/25279604415_10f213d492_b.jpg",
+    "desc": "looking up",
+    "buildings": [
+      "smith-tower"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1569/24911933299_46ba0dff9b_b.jpg",
+    "desc": "inside smith tower",
+    "buildings": [
+      "smith-tower"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1632/24652828843_ebbb3217e8_b.jpg",
+    "desc": "interurban bldg from smith tower floor 2",
+    "buildings": [
+      "smith-tower"
+    ]
   }
 
 ]
