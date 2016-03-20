@@ -88,7 +88,7 @@
   },
   {
     "src": "https://farm2.staticflickr.com/1702/24986756295_086c583985_b.jpg",
-    "desc": "even cooler than a can",
+    "desc": "bottle or can",
     "buildings": [
       "rainier-tower"
     ]
@@ -206,6 +206,128 @@
     "buildings": [
       "smith-tower"
     ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1638/25293378434_0268b531c2_b.jpg",
+    "desc": "among trees",
+    "buildings": [
+      "columbia-center"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1663/25715585325_e0021dc404_b.jpg",
+    "desc": "please enter",
+    "buildings": [
+      "1201-3rd-ave"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1595/25088967643_4492aeda54_b.jpg",
+    "desc": "hello, world",
+    "buildings": [
+      "1201-3rd-ave"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1656/25088971213_919603ec60_b.jpg",
+    "desc": "medium cheddar",
+    "buildings": [
+      "1201-3rd-ave"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1709/25594582062_c4dcac5a3b_b.jpg",
+    "desc": "lounge arena",
+    "buildings": [
+      "1201-3rd-ave"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1717/25088987013_4b2a76e48b_b.jpg",
+    "desc": "seattle from here",
+    "buildings": [
+      "1201-3rd-ave",
+      "space-needle"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1584/25088976503_ab140c4cbf_b.jpg",
+    "desc": "up please",
+    "buildings": [
+      "1201-3rd-ave"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1662/25689551506_f2c9a6542a_b.jpg",
+    "desc": "be safe",
+    "buildings": [
+      "safeco-plaza"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1630/25620557051_b4b988b5d0_b.jpg",
+    "desc": "keep safe",
+    "buildings": [
+      "safeco-plaza"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1451/25594609662_c2cc294808_b.jpg",
+    "desc": "catch err",
+    "buildings": [
+      "safeco-plaza"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1514/25089017113_fd12e3fd5d_b.jpg",
+    "desc": "ascend with caution",
+    "buildings": [
+      "safeco-plaza"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1539/25594622522_24555ee82a_b.jpg",
+    "desc": "laamps",
+    "buildings": [
+      "safeco-plaza"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1524/25620576121_dcd1288d60_b.jpg",
+    "desc": "scan ur club card",
+    "buildings": [
+      "safeco-plaza"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1656/25089023183_2b11e10f52_b.jpg",
+    "desc": "ascend with care",
+    "buildings": [
+      "safeco-plaza"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1714/25715642005_e8c430618c_b.jpg",
+    "desc": "stay safe",
+    "buildings": [
+      "safeco-plaza"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1679/25689495516_e1434c869b_b.jpg",
+    "desc": "3rd ave & stewart",
+    "buildings": [
+      "1201-3rd-ave"
+    ]
+  },
+  {
+    "src": "https://farm2.staticflickr.com/1700/25293474114_97001a74ff_b.jpg",
+    "desc": "alaskan way viaduct",
+    "buildings": [
+      "1201-3rd-ave",
+      "1000-2nd-ave",
+      "wells-fargo-center",
+      "henry-m-jackson-federal-building"
+    ]
   }
-
 ]
